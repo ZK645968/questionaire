@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var history = require('connect-history-api-fallback')
 // 导入配置文件和路由
@@ -11,19 +11,15 @@ var app = express();
 
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-// 加载解析json的中间件。
-app.use(bodyParser.json());
-// 加载解析urlencoded请求体的中间件。
-app.use(bodyParser.urlencoded({ 
-	extended: false   
-}));
+app.use(history({
+    index: '/index.html'
+}))
 
 // 设置dist文件夹为存放静态文件的目录。
 app.use('/', express.static(__dirname + '/dist'));
 
-app.use(history({
-    index: '/index.html'
-}))
+// 加载解析json的中间件。
+app.use(bodyParser.json());
 
 // 路由控制器
 app.use('/api', routes)

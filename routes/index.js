@@ -11,7 +11,6 @@ router.get('/test', function(req, res, next) {
 	});
 });
 
-
 // 注册
 router.post('/register', (req, res, next) => {
     User.save({username: req.body.registerName, password: sha1(req.body.registerPassword)})
