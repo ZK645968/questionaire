@@ -1,0 +1,49 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width:device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"><title>question</title><style type=text/css>body{
+      margin: 0;
+    }
+   .el-message-box{
+      width: 340px !important;
+    }
+    input[type=radio]{
+        width:  15px !important;
+        height: 15px !important;
+    }
+    .singleData .graph div{
+ 				width:0px;
+		}</style><link href=/static/css/app.7f98db621bf165683374e5b5c6a5cb63.css rel=stylesheet></head><body><div id=app></div><script>window.onload =function(){
+	var obtn = document.getElementById('btn');
+	var clientHeight = document.documentElement.clientHeight; //可视区域的高度
+	var timer = null;
+	var isTop = true;
+	
+	//滚动条滚动时触发
+	window.onscroll = function(){
+		var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+		if(osTop >= clientHeight){
+			obtn.style.display = 'block';
+		}
+		else{
+			obtn.style.display = 'none';
+		}
+		if(!isTop){
+			clearInterval(timer);
+		}
+		isTop = false;
+	}
+
+	obtn.onclick = function(){
+
+		timer = setInterval(function(){
+			//滚动条离顶部的高度
+		var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+		var speed = Math.floor(-osTop / 6);
+		document.documentElement.scrollTop = document.body.scrollTop = osTop + speed;
+		
+		isTop = true;
+		// console.log(osTop - speed);
+		if(osTop == 0){
+			clearInterval(timer);
+		}
+		},30);
+	}
+}</script><script type=text/javascript src=/static/js/manifest.8aec120e06f53251635f.js></script><script type=text/javascript src=/static/js/vendor.45f0c3e3da9e5e29de54.js></script><script type=text/javascript src=/static/js/app.cde2eaf50da62681fac4.js></script></body></html>
